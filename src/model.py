@@ -14,7 +14,7 @@ class CaptchaModel(nn.Module):
         self.drop_1 = nn.Dropout(0.2)
         self.linear_1 = nn.Linear(1152, 64)
         
-        self.gru = nn.GRU(64, 32, bidirectional=True, num_layers=2, dropout=0.25)
+        self.gru = nn.GRU(64, 32, bidirectional=True, num_layers=2, dropout=0.25, batch_first=True)
         self.output = nn.Linear(64, num_chars + 1)
 
     def forward(self, images, targets=None):
